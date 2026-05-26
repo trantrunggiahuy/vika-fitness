@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIKA - Thư viện bài tập</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'main-red': '#ffb701', // Matching your brand yellow-orange accent color
+                        'bg-primary': 'var(--bg-primary)',
+                        'bg-secondary': 'var(--bg-secondary)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #09090b;
+            --text-secondary: #52525b;
+        }
+        html.dark {
+            --bg-primary: #09090b;
+            --bg-secondary: #121214;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+        }
+        /* Grid auto layout padding fix */
+        .exercise-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .exercise-card:hover {
+            transform: translateY(-6px);
+        }
+    </style>
+
+
+
+</head>
+<body class="bg-bg-secondary text-text-primary transition-colors duration-300">
+
+
+    <!-- ================= HEADER ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 lg:px-8 py-5 transition-all duration-300">
+        <nav class="mx-auto max-w-[1400px] flex items-center justify-between bg-white/70 dark:bg-[#1a1a1c]/70 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full px-6 lg:px-8 py-2.5 shadow-sm dark:shadow-lg transition-colors duration-300">
+           
+            <!-- Logo -->
+            <div class="flex items-center gap-x-12">
+                <a href="index.html" id="nav-logo" class="flex items-center transition-transform hover:scale-105">
+                    <img src="logo.png" alt="VIKA Logo" class="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 dark:invert-0 invert" />
+                </a>
+
+
+                <!-- Menu Navigation -->
+                <div class="hidden lg:flex items-center gap-x-8">
+                    <a href="index.html" id="nav-menu-home" class="text-main-red font-bold text-sm transition-colors nav-active">Trang chủ</a>
+                   
+                    <!-- Nút Bài tập + Dropdown -->
+                    <div class="relative group" id="nav-baitap-container">
+                        <a href="baitap.html" id="nav-baitap" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors flex items-center gap-1 cursor-pointer">
+                            Bài tập
+                        </a>
+                       
+
+                    </div>
+
+
+                    <a href="thuthach.html" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Thử thách</a>
+                  
+                </div>
+            </div>
+
+
+            <!-- Nút Action & Theme Toggle -->
+            <div class="flex items-center gap-4 lg:gap-6">
+                <a href="dangnhap.html" class="hidden lg:block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Đăng nhập</a>
+                <a href="dangky.html" class="hidden sm:block px-6 py-2.5 bg-main-red hover:bg-yellow-500 text-black font-bold text-sm rounded-full transition-transform hover:scale-105 shadow-[0_0_15px_rgba(255,183,1,0.3)]">
+                    Đăng ký miễn phí
+                </a>
+               
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-white/20 transition-all">
+                    <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+                    <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+                </button>
+            </div>          
+        </nav>
+    </header>
+
+    <!-- MAIN BODY CONTAINER -->
+     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-20">        
+        <!-- Tiêu đề trang -->
+        <div class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white uppercase">Thư viện bài tập chuyên sâu</h1>
+            <p class="text-sm md:text-base text-zinc-500 dark:text-zinc-400 mt-2">Tổng hợp 26 bài tập Pilates, Yoga và Core nâng cơ toàn diện chuẩn khoa học.</p>
+        </div>
+
+        <!-- Bộ lọc bài tập (Filter Buttons) -->
+        <div class="flex flex-wrap items-center gap-2 mb-12 border-b border-gray-100 dark:border-zinc-800 pb-6">
+            <button onclick="filterExercises('all')" id="btn-all" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-[#ffb701] text-black">
+                Tất cả (26)
+            </button>
+            <button onclick="filterExercises('core')" id="btn-core" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-gray-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-800">
+                Cơ bụng & Lưng (Core)
+            </button>
+            <button onclick="filterExercises('lower')" id="btn-lower" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-gray-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-800">
+                Mông & Đùi (Lower Body)
+            </button>
+            <button onclick="filterExercises('upper')" id="btn-upper" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-gray-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-800">
+                Vai & Tay (Upper Body)
+            </button>
+        </div>
+
+        <!-- Lưới danh sách bài tập (Exercise Grid) -->
+        <div id="exercise-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- JavaScript tự động đổ 26 bài tập vào đây cực mượt -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-100 dark:border-zinc-900 bg-gray-50 dark:bg-[#0c0c0e] py-8 text-center text-xs text-zinc-500 dark:text-zinc-600">
+        <p>&copy; 2026 VIKA AI Fitness. All rights reserved.</p>
+    </footer>
+
+    <!-- LOGIC JAVASCRIPT XỬ LÝ DATABASE 26 BÀI TẬP VÀ FILTER -->
+    <script>
+        // Danh sách 26 bài tập chuẩn hóa theo tinh thần Pilates & Core của Vika
+        const exerciseDatabase = [
+            { id: 1, name: "The Hundred", category: "core", duration: "45s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80", desc: "Bài tập khởi động kinh điển kích hoạt cơ bụng sâu và tăng tuần hoàn." },
+            { id: 2, name: "Roll Up", category: "core", duration: "50s", level: "Trung cấp", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80", desc: "Tăng sự linh hoạt cột sống và siết chặt vùng bụng trên." },
+            { id: 3, name: "Single Leg Stretch", category: "core", duration: "40s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80", desc: "Giữ vững vùng xương chậu trong khi kéo giãn và đốt mỡ chân." },
+            { id: 4, name: "Double Leg Stretch", category: "core", duration: "45s", level: "Nâng cao", img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=400&q=80", desc: "Thử thách cực đại cho vùng cơ bụng dưới và cơ lõi trung tâm." },
+            { id: 5, name: "Criss Cross (Pilates Bicycle)", category: "core", duration: "50s", level: "Trung cấp", img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80", desc: "Tập trung thắt chặt vòng eo và nhóm cơ bụng chéo." },
+            { id: 6, name: "Glute Bridge (Cầu mông)", category: "lower", duration: "60s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1566241477600-ac026ad43874?auto=format&fit=crop&w=400&q=80", desc: "Kích hoạt vòng 3 căng tròn, giảm áp lực mỏi cho thắt lưng." },
+            { id: 7, name: "Single Leg Bridge", category: "lower", duration: "45s", level: "Trung cấp", img: "https://images.unsplash.com/photo-1434682881908-b43d0467b798?auto=format&fit=crop&w=400&q=80", desc: "Cô lập từng bên mông đùi giúp sửa lỗi lệch cơ mông hiệu quả." },
+            { id: 8, name: "Clamshell (Mở gối vỏ sò)", category: "lower", duration: "50s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=400&q=80", desc: "Tập trung tạo form cho nhóm cơ mông nhỡ và mông bé." },
+            { id: 9, name: "Donkey Kicks", category: "lower", duration: "45s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=400&q=80", desc: "Nâng cao đỉnh mông, tách mông đùi rõ nét." },
+            { id: 10, name: "Fire Hydrant", category: "lower", duration: "45s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=400&q=80", desc: "Lấp đầy phần hông bị hóp hai bên cực kỳ hiệu quả." },
+            { id: 11, name: "Plank Hold", category: "core", duration: "60s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?auto=format&fit=crop&w=400&q=80", desc: "Xây dựng sức bền toàn diện cho cơ thể từ vai đến gót chân." },
+            { id: 12, name: "Side Plank", category: "core", duration: "45s", level: "Trung cấp", img: "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&w=400&q=80", desc: "Tăng sức mạnh liên sườn và cải thiện độ thăng bằng." },
+            { id: 13, name: "Bird Dog", category: "core", duration: "50s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1599447292180-45fd84092ef0?auto=format&fit=crop&w=400&q=80", desc: "Bài tập trị liệu thắt lưng và tăng tính ổn định của cơ lõi." },
+            { id: 14, name: "Superman Extension", category: "core", duration: "40s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?auto=format&fit=crop&w=400&q=80", desc: "Tăng cường săn chắc cơ vùng lưng dưới và mông." },
+            { id: 15, name: "Pilates Push-up", category: "upper", duration: "45s", level: "Nâng cao", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=400&q=80", desc: "Kiến tạo khuôn vai thon gọn và bắp tay sau săn chắc." },
+            { id: 16, name: "Triceps Dips", category: "upper", duration: "45s", level: "Trung cấp", img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=400&q=80", desc: "Đốt cháy mỡ thừa vùng bắp tay sau dưới cánh tay." },
+            { id: 17, name: "Arm Pulses", category: "upper", duration: "60s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=400&q=80", desc: "Làm thon nhỏ bắp tay phẳng mà không lo bị thô cơ." },
+            { id: 18, name: "Pilates Swimming", category: "core", duration: "50s", level: "Trung cấp", img: "https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?auto=format&fit=crop&w=400&q=80", desc: "Mô phỏng động tác bơi trên cạn giúp săn chắc cơ dựng gai sống." },
+            { id: 19, name: "Teaser", category: "core", duration: "30s", level: "Nâng cao", img: "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=400&q=80", desc: "Đỉnh cao thăng bằng và sức mạnh cơ bụng vùng thắt lưng." },
+            { id: 20, name: "Leg Pull Front", category: "upper", duration: "45s", level: "Nâng cao", img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80", desc: "Tăng cơ tay vai đồng thời giữ ổn định trục cột sống cổ." },
+            { id: 21, name: "Side Leg Series - Up/Down", category: "lower", duration: "50s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80", desc: "Điêu khắc độ thon dài cho vùng cơ đùi ngoài." },
+            { id: 22, name: "Side Leg Series - Circles", category: "lower", duration: "45s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80", desc: "Xoay vòng khớp hông giúp tăng linh hoạt và săn đùi." },
+            { id: 23, name: "Inner Thigh Lifts", category: "lower", duration: "50s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80", desc: "Tập trung triệt tiêu vùng mỡ thừa cứng đầu ở đùi trong." },
+            { id: 24, name: "Child's Pose (Tư thế em bé)", category: "core", duration: "60s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=400&q=80", desc: "Thư giãn toàn bộ các bó cơ mệt mỏi sau chuỗi bài tập áp lực." },
+            { id: 25, name: "Cobra Stretch (Tư thế rắn hổ mang)", category: "core", duration: "45s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80", desc: "Mở rộng lồng ngực và giãn sâu vùng cơ bụng trước." },
+            { id: 26, name: "Cat-Cow Stretch", category: "core", duration: "60s", level: "Cơ bản", img: "https://images.unsplash.com/photo-1566241477600-ac026ad43874?auto=format&fit=crop&w=400&q=80", desc: "Giải tỏa căng thẳng vùng thắt lưng và linh hoạt đốt sống lưng." }
+        ];
+
+        // Hàm render danh sách bài tập ra màn hình grid
+        function renderExercises(data) {
+            const grid = document.getElementById('exercise-grid');
+            grid.innerHTML = ''; // Clear dữ liệu cũ
+
+            data.forEach(item => {
+                let catBadge = '';
+                if(item.category === 'core') catBadge = 'Bụng & Lõi';
+                else if(item.category === 'lower') catBadge = 'Mông & Đùi';
+                else if(item.category === 'upper') catBadge = 'Tay & Vai';
+
+                const card = document.createElement('div');
+                card.className = "exercise-card bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800/60 rounded-3xl overflow-hidden shadow-sm flex flex-col";
+                card.innerHTML = `
+                    <div class="relative w-full h-48 bg-zinc-800 overflow-hidden">
+                        <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-85 hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-black/60 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
+                            ${catBadge}
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-[#ffb701] text-black text-[10px] font-extrabold px-2.5 py-1 rounded-full">
+                            ${item.duration}
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-2">
+                                <h4 class="font-bold text-base text-gray-900 dark:text-white truncate">${item.name}</h4>
+                                <span class="text-[11px] text-zinc-400 font-medium">${item.level}</span>
+                            </div>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-3 leading-relaxed">${item.desc}</p>
+                        </div>
+                        <button class="w-full mt-5 h-9 bg-zinc-200 dark:bg-zinc-800 hover:bg-[#ffb701] dark:hover:bg-[#ffb701] hover:text-black dark:hover:text-black text-gray-800 dark:text-zinc-200 text-xs font-bold rounded-xl transition-all active:scale-98">
+                            Bắt đầu tập
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Hàm lọc bài tập theo danh mục nút bấm
+        window.filterExercises = (category) => {
+            // Cập nhật trạng thái active cho nút bấm
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-[#ffb701]', 'text-black');
+                btn.classList.add('bg-gray-100', 'dark:bg-zinc-900', 'text-zinc-600', 'dark:text-zinc-400');
+            });
+
+            const activeBtn = document.getElementById(`btn-${category}`);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-gray-100', 'dark:bg-zinc-900', 'text-zinc-600', 'dark:text-zinc-400');
+                activeBtn.classList.add('bg-[#ffb701]', 'text-black');
+            }
+
+            // Lọc dữ liệu mượt mà
+            if(category === 'all') {
+                renderExercises(exerciseDatabase);
+            } else {
+                const filtered = exerciseDatabase.filter(item => item.category === category);
+                renderExercises(filtered);
+            }
+        };
+
+        // Dark/Light Mode Switcher Logic đồng bộ
+        const htmlElement = document.documentElement;
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Chạy lần đầu khi load trang
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        // Render toàn bộ 26 bài tập lúc khởi chạy
+        renderExercises(exerciseDatabase);
+    </script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VIKA - Trợ lý tập luyện thông minh</title>
+   
+    <!-- Nhúng CSS tùy chỉnh -->
+    <link rel="stylesheet" href="style.css" />
+   
+    <!-- Nhúng Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': 'var(--bg-primary)',
+                        'bg-secondary': 'var(--bg-secondary)',
+                        'bg-tertiary': 'var(--bg-tertiary)',
+                        'text-primary': 'var(--text-primary)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'secondary-gray': '#6D6D6D',
+                        'main-red': '#ffb701',
+                        'accent-indigo': '#4C419F',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bg-secondary text-text-primary transition-colors duration-300">
+
+
+    <!-- ================= HEADER ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 lg:px-8 py-5 transition-all duration-300">
+        <nav class="mx-auto max-w-[1400px] flex items-center justify-between bg-white/70 dark:bg-[#1a1a1c]/70 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full px-6 lg:px-8 py-2.5 shadow-sm dark:shadow-lg transition-colors duration-300">
+           
+            <!-- Logo -->
+            <div class="flex items-center gap-x-12">
+                <a href="#" id="nav-logo" class="flex items-center transition-transform hover:scale-105">
+                    <img src="logo.png" alt="VIKA Logo" class="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 dark:invert-0 invert" />
+                </a>
+
+
+                <!-- Menu Navigation -->
+                <div class="hidden lg:flex items-center gap-x-8">
+                    <a href="#" id="nav-menu-home" class="text-main-red font-bold text-sm transition-colors nav-active">Trang chủ</a>
+                   
+                    <!-- Nút Bài tập + Dropdown -->
+                    <div class="relative group" id="nav-baitap-container">
+                        <a href="baitap.html" id="nav-baitap" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors flex items-center gap-1 cursor-pointer">
+                            Bài tập
+                        </a>
+                       
+
+                    </div>
+
+
+                    <a href="thuthach.html" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Thử thách</a>
+                  
+                </div>
+            </div>
+
+
+            <!-- Nút Action & Theme Toggle -->
+            <div class="flex items-center gap-4 lg:gap-6">
+                <a href="dangnhap.html" class="hidden lg:block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Đăng nhập</a>
+                <a href="dangky.html" class="hidden sm:block px-6 py-2.5 bg-main-red hover:bg-yellow-500 text-black font-bold text-sm rounded-full transition-transform hover:scale-105 shadow-[0_0_15px_rgba(255,183,1,0.3)]">
+                    Đăng ký miễn phí
+                </a>
+               
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-white/20 transition-all">
+                    <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+                    <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+                </button>
+            </div>          
+        </nav>
+    </header>   
+
+
+<!-- Banner chạy 4 hình -->
+<section class="relative w-full overflow-hidden h-[400px] sm:h-[500px] lg:h-[650px] bg-gray-200">
+    <div id="banner-slider" class="flex transition-transform duration-700 ease-in-out h-full w-[400%]">
+        <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('banner4.jpg');"></div>
+        <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('banner3.png');"></div>
+        <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('banner3.png');"></div>
+        <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('banner3.png');"></div>
+    </div>
+
+
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-30">
+        <!-- Thêm transition-all và hover:bg-white để chấm sáng lên khi di chuột -->
+        <button onclick="goToSlide(0)" class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300"></button>
+        <button onclick="goToSlide(1)" class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300"></button>
+        <button onclick="goToSlide(2)" class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300"></button>
+        <button onclick="goToSlide(3)" class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300"></button>
+    </div>
+</section>
+
+<!-- giới thiệu về vika -->
+<section class="py-16 bg-neutral-950 text-white overflow-hidden">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
+          
+          <div class="lg:col-span-7 space-y-7 text-left">
+            <div>
+             <h2 class="text-5xl md:text-6xl lg:text-7xl font-black text-yellow-500 uppercase tracking-wider inline-block">                  Về VIKA
+              </h2>
+              <div class="w-28 h-1 bg-yellow-500 mt-2"></div>
+            </div>
+            
+             <p class="text-gray-600 dark:text-gray-300 text-base md:text-2xl leading-relaxed">
+             Thay vì tập một mình và lo sai form, bạn có thể dùng VIKA để nhận phản hồi theo thời gian thực ngay trong lúc tập. Ứng dụng tập trung vào 3 điều quan trọng: <strong class="text-gray-900 dark:text-white">sửa form, cá nhân hóa lộ trình và tạo cảm giác luôn có người đồng hành.</strong>
+            </p>
+            
+             <p class="text-gray-600 dark:text-gray-300 text-base md:text-2xl leading-relaxed">
+             <strong class="text-gray-900 dark:text-white">VIKA</strong> được thiết kế cho người Việt với trải nghiệm dễ hiểu, gần gũi và thực tế. Bạn có thể bắt đầu chỉ với vài phút mỗi ngày để xây dựng thói quen vận động bền vững hơn.
+            </p>
+          </div>
+
+        
+
+          <div class="lg:col-span-5 relative">
+                <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-main-red"></div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-neutral-800 aspect-[3/4]">
+                    <img src="image_3934fd.png" alt="VIKA Transformation" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-main-red"></div>
+            </div>
+
+        </div>
+
+                <div class="-mt-10 md:-mt-16 pb-20 relative z-10">
+                      <a href="dangnhap.html" class="inline-block mt-8 px-8 py-3.5 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold rounded-full shadow-lg hover:opacity-90 transition-all whitespace-nowrap w-fit uppercase tracking-wide text-sm md:text-base">
+                  Bắt đầu luyện tập ngay
+                 </a>
+                </div>
+
+     
+
+          
+          <p class="text-sm italic text-gray-500 dark:text-gray-400 mt-6 pt-4 border-t border-gray-200/10 dark:border-gray-700/40">
+            * Lưu ý: VIKA hỗ trợ bạn tập đúng form và theo dõi tiến bộ, nhưng không thay thế tư vấn y khoa hoặc chẩn đoán, điều trị chuyên môn.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+
+<!-- các dịch vụ của vika -->
+<section class="py-16 bg-neutral-950 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight text-gray-900 dark:text-white">
+                Các dịch vụ của <span class="text-main-red">VIKA</span>
+            </h2>
+            <div class="w-24 h-1 bg-main-red mx-auto mt-3 rounded-full"></div>
+        </div>
+
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+           
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+               
+                <div class="flex items-center gap-4 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-red-50 dark:bg-red-950/30 rounded-lg flex items-center justify-center text-main-red text-2xl">
+                        <i class="fa-regular fa-clipboard"></i> </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-base">Lộ trình tập luyện cá nhân hóa</h3>
+                    </div>
+                </div>
+
+
+                <div class="flex items-center gap-4 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-red-50 dark:bg-red-950/30 rounded-lg flex items-center justify-center text-main-red text-2xl">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-base">AI kiểm tra và điều chỉnh tư thế</h3>
+                    </div>
+                </div>
+
+
+                <div class="flex items-center gap-4 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-red-50 dark:bg-red-950/30 rounded-lg flex items-center justify-center text-main-red text-2xl">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-base">Video hướng dẫn trực quan</h3>
+                    </div>
+                </div>
+
+
+                <div class="flex items-center gap-4 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-red-50 dark:bg-red-950/30 rounded-lg flex items-center justify-center text-main-red text-2xl">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-base">Tập luyện linh hoạt mọi lúc</h3>
+                    </div>
+                </div>
+
+
+                <div class="flex items-center gap-4 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-red-50 dark:bg-red-950/30 rounded-lg flex items-center justify-center text-main-red text-2xl">
+                        <i class="fa-solid fa-book-open animate-pulse"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-base">Thư viện bài tập đa dạng</h3>
+                    </div>
+                </div>
+
+
+                <div class="flex items-center gap-4 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-red-50 dark:bg-red-950/30 rounded-lg flex items-center justify-center text-main-red text-2xl">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-base">Theo dõi tiến trình luyện tập</h3>
+                    </div>
+                </div>
+
+
+                <div class="flex items-center gap-4 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:shadow-md transition-all md:col-span-2">
+                    <div class="w-12 h-12 flex-shrink-0 bg-red-50 dark:bg-red-950/30 rounded-lg flex items-center justify-center text-main-red text-2xl">
+                        <i class="fa-regular fa-bell"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-base">Nhắc nhở luyện tập thông minh</h3>
+                    </div>
+                </div>
+
+                 <div class="pt-3">
+                    <a href="dangnhap.html" class="inline-flex items-center gap-3 bg-gradient-to-r from-main-red to-orange-600 text-white font-black uppercase px-8 py-4 rounded-full shadow-lg hover:from-orange-600 hover:to-main-red hover:shadow-red-900/50 transition-all transform hover:-translate-y-1 whitespace-nowrap w-fit">
+                        Bắt đầu luyện tập ngay  
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700 h-full flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-main-red bg-red-50 dark:bg-red-950/50 px-3 py-1 rounded-full">Trải nghiệm thực tế</span>
+                    <h3 class="text-xl font-black text-gray-900 dark:text-white mt-3 mb-4">Người từng trải nghiệm</h3>
+                    <p class="text-gray-600 dark:text-gray-300 italic leading-relaxed">
+                        "Yoga giúp tôi trẻ hơn rất nhiều, sự kiên trì luyện tập mang lại cho bản thân mình một nguồn năng lượng hoa và một cơ thể dẻo dai khỏe mạnh hơn từng ngày..."
+                    </p>
+                </div>
+                <div class="mt-6 rounded-xl overflow-hidden h-48 sm:h-64 bg-gray-100">
+                    <img src="nguoi_trai_nghiem.jpg" alt="Người trải nghiệm VIKA" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="py-16 bg-neutral-950 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+           
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-main-red"></div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-neutral-800 aspect-[3/4]">
+                    <img src="image_3934fd.png" alt="VIKA Transformation" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-main-red"></div>
+            </div>
+
+
+            <div class="lg:col-span-7 space-y-6">
+                <div class="space-y-2">
+                    <h4 class="text-main-red uppercase font-black tracking-wider text-sm">CHÚNG TÔI LÀ VIKA</h4>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-none">
+                        BIẾN GIẤC MƠ TRỞ THÀNH <br>
+                        <span class="bg-gradient-to-r from-yellow-400 via-main-red to-orange-500 text-transparent bg-clip-text">HIỆN THỰC</span>
+                    </h2>
+                </div>
+
+
+                <div class="h-1 w-20 bg-main-red rounded-full"></div>
+
+
+                <div class="space-y-4 text-neutral-300 font-light leading-relaxed text-base sm:text-lg">
+                    <p>
+                        <strong class="text-white font-bold">Nguyễn Thị Thuý Vân</strong> - "Yoga giúp tôi trẻ hơn rất nhiều. Sức khỏe và sự tích cực mang lại hạnh phúc cho cả gia đình tôi. Ban đầu khi mới tập nền móng cơ thể rất yếu, phản xạ vận động kém nhưng nhờ kiên trì rèn luyện với các chương trình bài bản của VIKA, tôi đã vượt qua giới hạn của bản thân. Bạn không cần phải giỏi mới bắt đầu, bạn cần bắt đầu để trở nên giỏi hơn."
+                    </p>
+                    <p class="text-neutral-400 text-sm italic">
+                        — Chias sẻ từ một học viên đã gắn bó cùng hệ sinh thái VIKA.
+                    </p>
+                </div>
+
+
+                <div class="pt-4">
+                    <a href="dangnhap.html" class="inline-flex items-center gap-3 bg-gradient-to-r from-main-red to-orange-600 text-white font-black uppercase px-8 py-4 rounded-full shadow-lg hover:from-orange-600 hover:to-main-red hover:shadow-red-900/50 transition-all transform hover:-translate-y-1">
+                        Bắt đầu luyện tập ngay  
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- ================= MỤC CÁC BÀI TẬP VỚI HIỆU ỨNG STICKY SCROLL ================= -->
+<section id="kho-bai-tap" class="py-24 bg-zinc-950 text-white relative border-t border-zinc-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       
+        <div class="mb-20">
+           <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight italic">
+    <span class="border-b-4 border-amber-500 pb-1">KHO</span>
+    <span class="text-amber-500 bg-gradient-to-r from-yellow-400 to-amber-500 text-transparent bg-clip-text pr-4">BÀI TẬP</span>
+</h2>
+        </div>
+
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative">
+           
+            <div class="lg:col-span-7 space-y-16 pb-32">
+               
+                <div class="exercise-scroll-item min-h-[40vh] flex flex-col justify-center transition-all duration-500 ease-out opacity-30 origin-left" data-image="workout.jpg">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-950/60 text-green-400 border border-green-500/40 text-[11px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded shadow-[0_0_12px_rgba(34,197,94,0.15)]">
+                            Live
+                        </span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-wide text-amber-500 mb-3 transition-colors duration-300">
+                        Workout
+                    </h3>
+                    <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-light max-w-xl transition-colors duration-300">
+                        Hệ thống bài tập HIIT, Cardio và kháng lực phối hợp giúp kích hoạt tối đa các nhóm cơ, đốt cháy mỡ thừa siêu tốc và tăng cường sức bền tim mạch toàn diện.
+                    </p>
+                </div>
+
+
+                <div class="exercise-scroll-item min-h-[40vh] flex flex-col justify-center transition-all duration-500 ease-out opacity-30 origin-left" data-image="yoga.jpg">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-950/60 text-green-400 border border-green-500/40 text-[11px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded shadow-[0_0_12px_rgba(34,197,94,0.15)]">
+                            Live
+                        </span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-wide text-amber-500 mb-3 transition-colors duration-300">
+                        Yoga
+                    </h3>
+                    <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-light max-w-xl transition-colors duration-300">
+                        Tập trung vào sự đồng điệu giữa hơi thở và chuyển động. Các chuỗi bài tập kéo giãn chuyên sâu giúp giải tỏa áp lực cột sống và phục hồi năng lượng nội tại.
+                    </p>
+                </div>
+
+
+                <div class="exercise-scroll-item min-h-[40vh] flex flex-col justify-center transition-all duration-500 ease-out opacity-30 origin-left" data-image="pilates.jpg">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-950/60 text-green-400 border border-green-500/40 text-[11px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded shadow-[0_0_12px_rgba(34,197,94,0.15)]">
+                            Live
+                        </span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-wide text-amber-500 mb-3 transition-colors duration-300">
+                        Pilates
+                    </h3>
+                    <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-light max-w-xl transition-colors duration-300">
+                        Kiểm soát hoàn hảo tư thế thông qua các chuyển động tác động sâu vào vùng lõi (Core), giúp định hình đường cong cơ thể bền vững và sửa dáng gù lưng hiệu quả.
+                    </p>
+                </div>
+
+
+                <div class="exercise-scroll-item min-h-[40vh] flex flex-col justify-center transition-all duration-500 ease-out opacity-30 origin-left" data-image="boxing.jpg">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-950/60 text-green-400 border border-green-500/40 text-[11px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded shadow-[0_0_12px_rgba(34,197,94,0.15)]">
+                            Live
+                        </span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-wide text-amber-500 mb-3 transition-colors duration-300">
+                        Boxing
+                    </h3>
+                    <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-light max-w-xl transition-colors duration-300">
+                        Giải phóng stress cực đỉnh cùng các combo đấm, né đòn nhịp điệu cao. Tăng tốc độ phản xạ thần kinh đồng thời tiêu hao mức năng lượng khổng lồ.
+                    </p>
+                </div>
+
+
+            </div>
+
+
+            <div class="lg:col-span-5 w-full flex justify-center lg:justify-end lg:sticky lg:top-28 z-10 py-12">
+                <div class="relative w-[300px] sm:w-[330px] aspect-[9/18.8] bg-zinc-900 rounded-[44px] p-3 shadow-[0_0_60px_rgba(245,158,11,0.15)] border-4 border-zinc-800">
+                    <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30"></div>
+                    <div class="w-full h-full rounded-[34px] overflow-hidden bg-zinc-950 relative border border-zinc-800">
+                        <img id="interactive-phone-screen"
+                             src="workout.jpg"
+                             alt="Giao diện VIKA"
+                             class="w-full h-full object-cover transition-all duration-500 ease-in-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+       
+    </main>
+    <!-- KẾT THÚC MAIN TRANG CHỦ -->
+
+
+
+
+    <!-- ================= GIAO DIỆN THƯ VIỆN BÀI TẬP (ẨN MẶC ĐỊNH - NẰM NGOÀI THẺ MAIN) ================= -->
+    <section id="exercise-library-section" class="hidden min-h-screen pt-32 pb-12 bg-bg-secondary w-full">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Header Thư viện -->
+            <div class="mb-10">
+                <button id="back-to-home-btn" class="flex items-center gap-2 text-text-secondary hover:text-main-red transition-colors font-medium mb-6 group">
+                    <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Quay lại trang chủ
+                </button>
+                <h1 id="library-title" class="text-4xl lg:text-5xl font-bold text-text-primary mb-4">Thư viện bài tập</h1>
+                <p class="text-lg text-text-secondary" id="library-desc">Hàng trăm bài tập được hướng dẫn chi tiết bởi các chuyên gia.</p>
+            </div>
+
+
+            <!-- Khung chứa thanh Filter -->
+            <div id="library-filters" class="flex flex-col lg:flex-row gap-4 items-center mb-10">
+                <!-- JS sẽ bơm filter vào đây -->
+            </div>
+
+
+            <!-- Khung chứa Lưới bài tập -->
+            <div id="library-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                 <!-- JS sẽ bơm bài tập vào đây -->
+            </div>
+        </div>
+    </section>
+
+
+  
+
+ <!-- ================= FOOTER ================= -->
+ <footer class="bg-[#09090b] border-t border-gray-800 text-gray-400">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Dịch vụ</h3>
+                <ul class="space-y-2">
+                    <li><a href="baitap.html" class="hover:text-main-red transition-colors">Bài tập</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Huấn luyện viên AI</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Thành viên Elite</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Gói tập luyện</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Tải ứng dụng</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Tài nguyên</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-main-red transition-colors">Blog fitness</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Cộng đồng</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Tin tức</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">FAQ</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Lộ trình tập luyện</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Thông tin</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-main-red transition-colors">Về chúng tôi</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Điều khoản sử dụng</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Chính sách quyền riêng tư</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div>
+ </footer>
+
+
+    <!-- Nhúng Javascript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+

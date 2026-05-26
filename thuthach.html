@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIKA - Thử thách</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#121212] text-white min-h-screen flex flex-col font-sans">
+
+    <!-- ================= HEADER ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 lg:px-8 py-5 transition-all duration-300">
+        <nav class="mx-auto max-w-[1400px] flex items-center justify-between bg-white/70 dark:bg-[#1a1a1c]/70 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full px-6 lg:px-8 py-2.5 shadow-sm dark:shadow-lg transition-colors duration-300">
+           
+            <!-- Logo -->
+            <div class="flex items-center gap-x-12">
+                <a href="index.html" id="nav-logo" class="flex items-center transition-transform hover:scale-105">
+                    <img src="logo.png" alt="VIKA Logo" class="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 dark:invert-0 invert" />
+                </a>
+
+
+                <!-- Menu Navigation -->
+                <div class="hidden lg:flex items-center gap-x-8">
+                    <a href="index.html" id="nav-menu-home" class="text-main-red font-bold text-sm transition-colors nav-active">Trang chủ</a>
+                   
+                    <!-- Nút Bài tập + Dropdown -->
+                    <div class="relative group" id="nav-baitap-container">
+                        <a href="baitap.html" id="nav-baitap" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors flex items-center gap-1 cursor-pointer">
+                            Bài tập
+                        </a>
+                       
+
+                    </div>
+
+
+                    <a href="thuthach.html" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Thử thách</a>
+                  
+                </div>
+            </div>
+
+
+            <!-- Nút Action & Theme Toggle -->
+            <div class="flex items-center gap-4 lg:gap-6">
+                <a href="dangnhap.html" class="hidden lg:block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Đăng nhập</a>
+                <a href="dangky.html" class="hidden sm:block px-6 py-2.5 bg-main-red hover:bg-yellow-500 text-black font-bold text-sm rounded-full transition-transform hover:scale-105 shadow-[0_0_15px_rgba(255,183,1,0.3)]">
+                    Đăng ký miễn phí
+                </a>
+               
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-white/20 transition-all">
+                    <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+                    <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+                </button>
+            </div>          
+        </nav>
+    </header>
+
+
+  <main class="flex-grow pt-28 pb-16 px-4 md:px-8">
+    
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center mb-16">
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">Thử thách hiện tại</h1>
+        <p class="text-gray-400 text-lg">Tham gia để vượt qua giới hạn của bản thân cùng VIKA</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-mt-24 transition-colors duration-300">
+        
+        <div class="bg-[#18191a] rounded-xl overflow-hidden shadow-2xl border border-zinc-800/50 hover:border-zinc-700 transition-colors duration-300 cursor-pointer flex flex-col">
+          <div class="relative w-full aspect-[16/9] bg-gradient-to-r from-amber-900/40 via-[#242526] to-teal-950/40 flex items-center justify-center overflow-hidden group">
+            <div class="absolute inset-0 bg-blend-multiply opacity-30 pointer-events-none group-hover:opacity-40 transition-opacity"></div>
+            
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200" 
+                 alt="Thử thách 7 ngày cardio" 
+                 class="h-full w-auto object-contain shadow-2xl relative z-10 group-hover:scale-105 transition-transform duration-500" />
+
+            <div class="absolute bottom-4 left-4 w-14 h-16 md:w-16 md:h-18 rounded-xl overflow-hidden flex flex-col shadow-xl z-20 select-none">
+              <div class="bg-[#e42645] h-5 w-full"></div>
+              <div class="bg-[#242526]/95 flex-1 flex items-center justify-center text-2xl md:text-3xl font-black text-white">7</div>
+            </div>
+          </div>
+
+          <div class="p-4 md:p-5 flex flex-col justify-between items-start bg-[#242526] flex-grow">
+            <div class="text-[#f35369] font-medium text-sm md:text-base min-h-[24px] mb-1">
+              Sắp diễn ra
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-zinc-100 leading-tight mb-1">
+              Thử thách 7 ngày cardio
+            </h2>
+            <div class="text-zinc-400 text-sm md:text-base min-h-[22px]">
+              Hệ thống VIKA - Dành cho mọi cấp độ
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#18191a] rounded-xl overflow-hidden shadow-2xl border border-zinc-800/50 hover:border-zinc-700 transition-colors duration-300 cursor-pointer flex flex-col">
+          <div class="relative w-full aspect-[16/9] bg-gradient-to-r from-purple-900/40 via-[#242526] to-pink-950/40 flex items-center justify-center overflow-hidden group">
+            <div class="absolute inset-0 bg-blend-multiply opacity-30 pointer-events-none group-hover:opacity-40 transition-opacity"></div>
+            
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200" 
+                 alt="Yoga 10 phút trước khi ngủ" 
+                 class="h-full w-auto object-contain shadow-2xl relative z-10 group-hover:scale-105 transition-transform duration-500" />
+
+            <div class="absolute bottom-4 left-4 w-14 h-16 md:w-16 md:h-18 rounded-xl overflow-hidden flex flex-col shadow-xl z-20 select-none">
+              <div class="bg-[#e42645] h-5 w-full"></div>
+              <div class="bg-[#242526]/95 flex-1 flex items-center justify-center text-2xl md:text-3xl font-black text-white">20</div>
+            </div>
+          </div>
+
+          <div class="p-4 md:p-5 flex flex-col justify-between items-start bg-[#242526] flex-grow">
+            <div class="text-[#f35369] font-medium text-sm md:text-base min-h-[24px] mb-1">
+              Sắp diễn ra
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-zinc-100 leading-tight mb-1">
+              Yoga 10 phút trước khi ngủ trong 20 ngày
+            </h2>
+            <div class="text-zinc-400 text-sm md:text-base min-h-[22px]">
+              Hệ thống VIKA - Dành cho mọi cấp độ
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+  </main>
+
+</body>
+</html>

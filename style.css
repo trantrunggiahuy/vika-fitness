@@ -1,0 +1,223 @@
+/* Cấu hình phông chữ cơ bản */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Định nghĩa biến màu sắc cho Light Theme */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+   
+    --text-primary: #09090b;
+    --text-secondary: #52525b;
+}
+
+
+/* Định nghĩa biến màu sắc cho Dark Theme */
+html.dark {
+    --bg-primary: #18181b;
+    --bg-secondary: #54565B;
+    --bg-tertiary: #27272a;
+   
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+}
+
+
+/* Tùy chỉnh hiệu ứng mượt mà khi chuyển Dark/Light mode */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+}
+
+
+/* Ẩn thanh cuộn cho khu vực filter vuốt ngang */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+/* Ràng buộc số dòng text hiển thị cho tên bài tập */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+
+/* Smooth Scrolling cho toàn trang */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Tùy chỉnh hiệu ứng Dropdown Menu để mượt mà hơn */
+#nav-baitap-container:hover #dropdown-baitap {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+#dropdown-baitap {
+    transform: translateY(10px);
+}
+
+
+/* Hiệu ứng gạch chân cho menu đang ở trang hiện tại */
+.nav-active {
+    color: #ffb701 !important;
+    position: relative;
+    font-weight: 700;
+}
+
+
+.nav-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: #ffb701;
+    border-radius: 2px;
+}
+
+
+/* Hiệu ứng hover cho các card bài tập */
+#library-grid > div:hover {
+    transform: translateY(-4px);
+}
+
+
+/* Đảm bảo logo không bị dính đường gạch chân khi có class nav-active */
+#nav-logo.nav-active::after {
+    display: none;
+}
+
+
+#nav-logo img {
+    /* MÌNH ĐÃ THÊM DẤU } XUỐNG DƯỚI ĐỂ FIX LỖI BREAK TOÀN BỘ FILE NHÉ */
+    filter: drop-shadow(0 0 2px rgba(255, 183, 1, 0.2));
+}
+
+
+/* Fix mobile viewport display issue: */
+@media screen and (max-width: 1024px) {
+    .phone-feature-frame {
+        pointer-events: none;
+    }
+}
+
+
+/* -- HIỆU ỨNG STICKY SCROLL CHUẨN FITIFY (CLEAN & SMOOTH) -- */
+.feature-text {
+    opacity: 0.3 !important; /* Không quá mờ, giữ lại độ nét của chữ */
+    transform: translateY(25px); /* Trượt nhẹ từ dưới lên */
+    transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+.feature-text.is-active {
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+
+
+.feature-text h4 {
+    transition: color 0.4s ease;
+}
+
+
+/* Chữ nổi bật trên nền Tối */
+html.dark .feature-text.is-active h4 {
+    background: linear-gradient(to right, #ffb701, #fa7e1e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* Chữ nổi bật trên nền Sáng */
+html.light .feature-text.is-active h4,
+html:not(.dark) .feature-text.is-active h4 {
+    background: none !important;
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+
+
+/* --- CHUYÊN BIỆT CHO ĐIỆN THOẠI (Max-width 768px) --- */
+@media screen and (max-width: 768px) {
+    /* 1. Tách form email xếp tầng đứng để to, dễ gõ trên bàn phím ảo */
+    #email-form {
+        flex-direction: column;
+        border-radius: 1.5rem;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        gap: 12px; /* Khoảng cách giữa ô input và nút */
+    }
+   
+    #email-form input {
+        width: 100%;
+        border-radius: 999px !important;
+        background-color: var(--bg-primary);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Đưa chữ ra giữa khi gõ bằng đth */
+        border: 1px solid rgba(150, 150, 150, 0.3);
+    }
+   
+    #email-form button {
+        width: 100%; /* Kéo dài nút tràn viền đth */
+        justify-content: center;
+        border-radius: 999px !important;
+    }
+}
+
+
+@media screen and (max-width: 1023px) { /* Cho Mobile/Ipad cỡ trung */
+    /* Không gian cho cụm text cuộn lúc này cần thoáng và rõ các khung "bài (card)"*/
+    #scroll-texts-container {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+   
+    .feature-text {
+        opacity: 1 !important;     /* Trên điện thoại, tắt tính năng scroll ảo, để Text SÁNG BỪNG NGAY! */
+        transform: none !important;
+        min-height: auto !important; /* Dọn đống đệm height cao ở Desktop đi*/
+        margin-bottom: 1.5rem;       /* Đổi padding lớn thành cách biên khoảng nghỉ mềm*/
+       
+        /* Cấu hình thêm Box đẹp dạng bài đăng UI để điện thoại dễ tương tác lướt ngón cái: */
+        padding: 1.5rem !important;
+        border-radius: 1.5rem;
+        background: var(--bg-primary);
+        border: 1px solid var(--bg-tertiary);
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+
+    html.dark .feature-text {
+        background: #1c1c1e !important;
+        border: 1px solid rgba(255,255,255,0.05) !important;
+    }
+
+
+    .feature-text.is-active {
+        box-shadow: 0 0 0 2px #ffb701; /* Text vẫn highlight khi chạm vùng 55% màn Mobile để người lướt thích mắt */
+    }
+}
+}
+
+
+
